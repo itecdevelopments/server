@@ -33,8 +33,8 @@ connectDB()
 app.use(
   cors({
     origin: [
-      "https://itec-sa.vercel.app", // main deployed frontend
-      "https://itec-sa.vercel.app/", // redundant but allowed
+      "https://itec-srv-sa.vercel.app/", // main deployed frontend
+      "https://itec-srv-sa.vercel.app", // redundant but allowed
       "http://localhost:5173",       // optional for local dev
     ],
     credentials: true,
