@@ -32,6 +32,7 @@ connectDB()
 const allowedOrigins = [
   "https://itec-srv-sa.vercel.app", // main deployed frontend
   "http://localhost:5173",           // local dev
+  "https://client-k2jydgmwr-itecs-projects-f3ac336e.vercel.app",
 ];
 
 app.use(
