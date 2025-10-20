@@ -80,6 +80,7 @@ app.use("/api/v1", serviceReportRoutes);
 
 /* ------------------------------ 404 Handling ----------------------------- */
 app.all("*", (req, res, next) => {
+  // Handle all undefined routes
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
@@ -89,10 +90,54 @@ app.use(globalErrorHandler);
 /* ------------------------------- Server Run ------------------------------ */
 const PORT = process.env.PORT || 3000;
 
+/**
+ * On Vercel, Express apps are deployed as serverless functions, so `app.listen()`
+ * should NOT run in production. Vercel automatically handles the server.
+ * Locally, though, we need to start the listener.
+ */
 if (process.env.NODE_ENV !== "production") {
   app.listen(PORT, () => {
     console.log(`🚀 Server running locally on http://localhost:${PORT}`);
   });
+} else {
+  // ✅ Ensure preflight and CORS headers are returned even in serverless mode
+  app.use((req, res, next) => {
+    res.setHeader(
+      "Access-Control-Allow-Origin",
+      "https://itec-srv-sa.vercel.app"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Methods",
+      "GET, POST, PUT, PATCH, DELETE, OPTIONS"
+    );
+    res.setHeader(
+      "Access-Control-Allow-Headers",
+      "Content-Type, Authorization"
+    );
+    if (req.method === "OPTIONS") {
+      return res.sendStatus(204);
+    }
+    next();
+  });
 }
 
 module.exports = app;
+
+// /* ------------------------------ 404 Handling ----------------------------- */
+// app.all("*", (req, res, next) => {
+//   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+// });
+
+// /* --------------------------- Global Error Handler ------------------------ */
+// app.use(globalErrorHandler);
+
+// /* ------------------------------- Server Run ------------------------------ */
+// const PORT = process.env.PORT || 3000;
+
+// if (process.env.NODE_ENV !== "production") {
+//   app.listen(PORT, () => {
+//     console.log(`🚀 Server running locally on http://localhost:${PORT}`);
+//   });
+// }
+
+// module.exports = app;
