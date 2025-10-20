@@ -29,19 +29,30 @@ connectDB()
 
 /* ------------------------------- Middleware ------------------------------ */
 
-// ✅ CORS (allow frontend access)
+const allowedOrigins = [
+  "https://itec-srv-sa.vercel.app", // main deployed frontend
+  "http://localhost:5173",           // local dev
+];
+
 app.use(
   cors({
-    origin: [
-      // "https://itec-srv-sa.vercel.app/", // main deployed frontend
-      "https://itec-srv-sa.vercel.app",
-      "http://localhost:5173",       // optional for local dev
-    ],
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps or curl)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
     credentials: true,
     methods: ["GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
+
+// ✅ Always respond to OPTIONS preflights
+app.options("*", cors());
 
 // ✅ Body parsers & sanitizers
 app.use(cookieParser());
