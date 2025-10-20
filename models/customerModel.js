@@ -24,5 +24,12 @@ const customerSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
+// 🔍 Middleware: automatically exclude inactive customers
+customerSchema.pre(/^find/, function (next) {
+  // `this` refers to the current query
+  this.find({ isActive: { $ne: false } });
+  next();
+});
+
 const Customer = mongoose.model("Customer", customerSchema);
 module.exports = Customer;
