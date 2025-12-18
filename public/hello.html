@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ITEC Service Report Form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body style="background-color: antiquewhite">
+    <!-- Header -->
+    <div class="header-section">
+      <h1>ITEC Service Report Form</h1>
+      <img src="./itec-logo.jpg" style="width: 200px" alt="" />
+    </div>
+    <!-- ==== -->
+    <!-- FORM -->
+    <form class="serviceForm" action="/submit_form" method="POST">
+      <div class="parent container">
+        <div class="top-container">
+          <!-- Serial -- Date -- Customer Name -->
+          <div class="head head-left">
+            <!-- Serial Number -->
+            <div style="display: flex">
+              <label>Report Serial number</label>
+              <input required type="text" name="SerialReportNumber" />
+            </div>
+            <!-- Date -->
+            <div>
+              <label>Date</label>
+              <input required type="date" name="Date" />
+            </div>
+            <!-- Customer Name -->
+            <div>
+              <label>Customer Name :</label>
+              <input required type="text" name="CustomerName" />
+            </div>
+          </div>
+          <div class="head head-right">
+            <!-- Time In/Out -->
+            <div>
+              <label>Time</label>
+              <div class="dates">
+                <div>
+                  <label>In</label> <input required type="time" name="timeIn" />
+                </div>
+                <div>
+                  <label>Out</label>
+                  <input required type="time" name="timeOut" />
+                </div>
+              </div>
+            </div>
+            <!-- Quotation -->
+            <div>
+              <label>Quotation</label>
+              <input required type="text" name="Quotation" />
+            </div>
+            <!-- Purchase Order -->
+            <div>
+              <label>PO #</label>
+              <input required type="text" name="PurchaseOrder" />
+            </div>
+            <!-- Inventory-->
+            <div>
+              <label>INV #</label>
+              <input required type="text" name="Inventory" />
+            </div>
+          </div>
+        </div>
+        <div class="middle-container">
+          <!-- Machine Type -->
+          <div class="machine-type">
+            <!-- Machine Type Selection -->
+            <div class="selection1">
+              <label>Machine Type</label>
+              <select
+                class="select1"
+                name="MachineType"
+                onchange="hideSelect1(this)"
+              >
+                Machine Type
+                <option value="none">Select Machine Type</option>
+                <option value="CIJ">CIJ</option>
+                <option value="LASER">LASER</option>
+                <option value="TTO">TTO</option>
+                <option value="palletWrapping">PALLET WRAPPING</option>
+                <option value="cartoonTaping">CATROON TAPING</option>
+                <option value="scale">SCALE</option>
+                <option value="other">OTHER</option>
+              </select>
+            </div>
+            <!-- If Machine type = CIJ -->
+            <div id="div1" class="cij">
+              <div>
+                <label>Power ON time</label>
+                <input type="text" name="powerONtime" />
+              </div>
+              <div>
+                <label>Jet running time</label>
+                <input type="text" name="JetRunningTime" />
+              </div>
+              <div>
+                <label>Service due date</label>
+                <input type="text" name="ServiceDueDate" />
+              </div>
+              <div>
+                <label>Ink Type</label>
+                <input type="text" name="INKtype" />
+              </div>
+              <div>
+                <label>Solvent type</label>
+                <input type="text" name="SolventType" />
+              </div>
+            </div>
+          </div>
+          <!-- Model -->
+          <div>
+            <label>Model</label>
+            <input required type="text" name="Model" />
+          </div>
+          <!-- Serial Number -->
+          <div>
+            <label>Serial Number</label>
+            <input required type="text" name="SerialNumber" />
+          </div>
+          <!-- Service Type -->
+          <div class="service-type">
+            <!-- Machine Type Selection -->
+            <div class="selection2">
+              <label>Service Type</label>
+              <select
+                class="select2"
+                name="ServiceType"
+                onchange="hideSelect2(this)"
+                required
+              >
+                Service Type
+                <option value="none">Select Service Type</option>
+                <option value="NewInstallation">NEW INSTALLATION</option>
+                <option value="Demo">DEMO</option>
+                <option value="ServiceCall">SERVICE CALL</option>
+                <option value="Amc">AMC</option>
+                <option value="Warranty">WARRANTY</option>
+                <option value="FiltersReplacment">Filters Replacment</option>
+                <option value="other">OTHER</option>
+              </select>
+            </div>
+            <!-- If Service Type = new Instllation -->
+            <div id="div2" class="newinstallation">
+              <div>
+                <label>UNICODE</label>
+                <input type="text" name="Unicode" />
+              </div>
+              <div>
+                <label>Configuration code</label>
+                <input type="text" name="Configurationcode" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-container">
+          <div class="description">
+            <label> Job done description </label>
+            <textarea
+              required
+              rows="2"
+              cols="25"
+              name="description"
+              placeholder="Job description"
+            ></textarea>
+          </div>
+          <div class="ending">
+            <div>
+              <label>Job Completed ? </label>
+              <select required name="JobCompleted">
+                <option value="">select</option>
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+              </select>
+            </div>
+            <div class="completedBy">
+              <label>Job Completed By</label>
+              <div>
+                <label>engineer Name</label>
+                <input required type="text" name="engineerName" />
+              </div>
+              <div>
+                <label>designation</label>
+                <input required type="text" name="designation" />
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Submit Button -->
+        <button type="submit">Submit</button>
+      </div>
+    </form>
+
+    <script src="script.js"></script>
+  </body>
+</html>

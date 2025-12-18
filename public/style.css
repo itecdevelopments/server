@@ -1,0 +1,206 @@
+.hidden {
+  display: none;
+}
+
+.container {
+  width: 90%; /* Fills 90% of the viewport width */
+  max-width: 1200px; /* Limits the width to 1200px on large screens */
+  margin: 0 auto; /* Centers the container */
+  padding: 20px; /* Adds padding inside the container */
+  box-sizing: border-box; /* Ensures padding doesn’t affect the container’s width */
+}
+
+* {
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+}
+
+label {
+  font-size: 1.2rem;
+}
+input,
+select {
+  margin-left: 0.5rem;
+  padding: 0.2rem;
+}
+
+.header-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1rem;
+}
+
+.top-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.head {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.dates {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+@media (max-width: 600px) {
+  .head {
+    gap: 0.8rem;
+  }
+
+  .dates {
+    margin-top: 0.3rem;
+  }
+}
+
+.middle-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+/* Style each direct child of .middle-container to take up 100% width when needed */
+.middle-container > div {
+  flex: 1 1 45%; /* Default: 45% width of container; adjusts to wrap */
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.machine-type {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.selection1 {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.cij {
+  display: none;
+  border-bottom: 2px solid black;
+}
+
+.cij > * {
+  margin: 1.5rem 0.2rem;
+}
+.service-type {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.selection2 {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.newinstallation {
+  display: none;
+}
+
+.newinstallation > * {
+  margin: 1.5rem 0.2rem;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: 100%;
+  }
+  .middle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .machine-type {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem; /* Space between grid items */
+    flex-wrap: nowrap;
+  }
+
+  .cij {
+    flex-direction: column;
+    border-bottom: 2px solid black;
+    padding-bottom: 2rem;
+  }
+
+  .cij > * {
+    margin: 0.5rem auto;
+  }
+  .service-type {
+    flex-direction: column;
+  }
+
+  .newinstallation {
+    flex-direction: column;
+    border-bottom: 2px solid black;
+    padding-bottom: 2rem;
+  }
+
+  .newinstallation > * {
+    margin: 0.5rem auto;
+  }
+}
+
+.bottom-container {
+  margin: 2rem auto;
+}
+
+.description {
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-radius: 4px;
+}
+
+.ending {
+  display: flex;
+  justify-content: space-between;
+}
+
+.completedBy div {
+  margin: 1rem auto;
+}
+
+@media (max-width: 600px) {
+  .ending {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .completedBy div {
+    margin: 0.5rem auto;
+  }
+
+  button {
+    padding: 0.5rem 2rem;
+    font-size: 1rem;
+    border-radius: 7px;
+    border: 0.1rem solid black;
+  }
+}
+
+button {
+  padding: 0.5rem 2rem;
+  font-size: 1rem;
+  border-radius: 7px;
+  border: 0.1rem solid black;
+}
